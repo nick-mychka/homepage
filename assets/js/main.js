@@ -17,3 +17,23 @@ function startRotate(event) {
 function stopRotate() {  
     avatar.style.transform = 'rotateX(0)';
 }
+
+new TypeIt('.js-name', {
+  strings: 'Donald Trump',
+  speed: 100,
+  loop: false,
+  cursor: false,
+}).go();
+
+new TypeIt('.js-job', {
+  strings: 'President of United States of America',
+  startDelay: 1750,
+  speed: 60,
+  loop: false,
+  cursor: false,
+}).go();
+
+AOS.init({
+  once: true,
+  duration: 500
+});
