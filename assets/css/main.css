@@ -5,3 +5,99 @@
 .shadow-1 { 
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); 
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.avatar-container {
+    perspective: 10000px;
+    transform-style: preserve-3d;
+}
+
+.avatar {
+    position: relative;
+    transform: translateX(-50%) rotate(50deg);
+    transition: transform 0.15s;
+    z-index: 10;
+}
+
+.avatar-fix-me {
+    position: relative;
+}
+
+.avatar-fix-me::after {
+    content: 'Fix me :-)';
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
+    z-index: -1;
+}
+
+.appreciate-message {
+    padding: 15px;
+    font-size: 20px;
+    font-style: initial;
+    color: #28a745;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.25s ease-in;
+}
+
+.show-appreciate-message {
+    opacity: 1;
+}
+
+
+.social-link {
+    display: flex;
+    align-items: center;
+    transition: color 0.35s ease;
+}
+
+.social-link:hover .social-title {
+    transition: width 0.5s ease;
+    width: 100%;
+}
+
+.social-link:hover .social-icon {
+    animation: zoom-in 0.75s ease;
+}
+
+.social-link:hover.facebook {
+    color: #3c5a99;
+}
+.social-link:hover.twitter {
+    color: #1da1f2;
+}
+.social-link:hover.instagram {
+    color: #3f729b;
+}
+.social-link:hover.email {
+    color: #d44638;
+}
+
+.social-title {
+    display: inline-block;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.5s ease;
+}
+
+.social-icon {
+    width: 16px;
+    height: auto;
+    font-size: 16px;
+    margin-right: 10px;
+}
+@keyframes zoom-in {
+    0% {transform: scale(1)}
+    25% {transform: scale(1.15)}
+    50% {transform: scale(1)}
+    75% {transform: scale(1.15)}
+    100% {transform: scale(1)}
+}
