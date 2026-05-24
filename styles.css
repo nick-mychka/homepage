@@ -171,6 +171,10 @@ body {
 }
 
 /* Experience and additional info styles */
+.main-info {
+  color: var(--secondary-text-color);
+  text-align: justify;
+}
 .experiences {
   flex: 1 1 60%;
   margin-right: 50px;
