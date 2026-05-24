@@ -1,9 +1,36 @@
 <!DOCTYPE html>
-<html>
+<!-- Who is John Galt? -->
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Résumé</title>
+
+    <title>Hank Rearden — Junior Front-End Developer</title>
+    <meta
+      name="description"
+      content="Résumé of Hank Rearden, a junior front-end developer who loves clean, accessible interfaces and pixel-perfect design."
+    />
+    <meta name="author" content="Hank Rearden" />
+    <meta name="theme-color" content="#ff9a00" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Hank Rearden — Junior Front-End Developer" />
+    <meta
+      property="og:description"
+      content="Résumé of a junior front-end developer with a love for clean interfaces and pixel-perfect design."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- Inter web font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -16,7 +43,7 @@
 
             <div class="contact_info_container fh">
               <div class="contact-info__block">
-                <a href="" rel="author" class="contact-info__item">
+                <span class="contact-info__item">
                   <div class="contact-info__item-icon-wrapper">
                     <svg class="contact-info__item-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                       <path
@@ -28,7 +55,7 @@
                     </svg>
                   </div>
                   <span>Kyiv, Ukraine</span>
-                </a>
+                </span>
 
                 <a href="https://t.me/nmychka" rel="author" class="contact-info__item">
                   <div class="contact-info__item-icon-wrapper">
@@ -92,8 +119,59 @@
         <div class="container">
           <div class="resume__block">
             <div class="skills">
-              <h3 class="skills__header">Skills</h3>
-              <p class="skills__text">HTML & CSS, JavaScript, Figma, Problem solving, Continuous Learning</p>
+              <h3 class="skills__header">Tech Stack</h3>
+
+              <div class="skills__groups fh">
+                <div class="skills__group">
+                  <h4 class="skills__group-title">Core</h4>
+                  <ul class="skills__list">
+                    <li class="skills__item">
+                      <span class="skills__item-name">HTML &amp; CSS</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 85%"></span></span>
+                    </li>
+                    <li class="skills__item">
+                      <span class="skills__item-name">Responsive design</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 75%"></span></span>
+                    </li>
+                    <li class="skills__item">
+                      <span class="skills__item-name">JavaScript</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 60%"></span></span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="skills__group">
+                  <h4 class="skills__group-title">Tools</h4>
+                  <ul class="skills__list">
+                    <li class="skills__item">
+                      <span class="skills__item-name">Figma</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 70%"></span></span>
+                    </li>
+                    <li class="skills__item">
+                      <span class="skills__item-name">Git</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 65%"></span></span>
+                    </li>
+                    <li class="skills__item">
+                      <span class="skills__item-name">Accessibility</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 50%"></span></span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="skills__group">
+                  <h4 class="skills__group-title">Currently forging</h4>
+                  <ul class="skills__list">
+                    <li class="skills__item">
+                      <span class="skills__item-name">React</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 35%"></span></span>
+                    </li>
+                    <li class="skills__item">
+                      <span class="skills__item-name">TypeScript</span>
+                      <span class="skills__bar"><span class="skills__bar-fill" style="--level: 30%"></span></span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -139,7 +217,27 @@
             </div>
           </div>
         </div>
+        <div class="container">
+          <div class="resume__block resume__block--last">
+            <div class="beyond">
+              <h3 class="beyond__header">Beyond the code</h3>
+              <ul class="beyond__list">
+                <li class="beyond__item beyond__item--secret" title="Made of the strongest stuff there is.">
+                  ⚙️ Amateur metallurgy &amp; forging
+                </li>
+                <li class="beyond__item">♟️ Chess (slowly climbing the ladder)</li>
+                <li class="beyond__item">⌨️ Building mechanical keyboards</li>
+                <li class="beyond__item">📚 Sci-fi &amp; philosophy</li>
+                <li class="beyond__item">☕ Optimising my coffee-to-commit ratio</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div class="egg-banner" hidden>⚙️ Rearden Metal mode unlocked</div>
     </main>
+
+    <script src="script.js" defer></script>
   </body>
 </html>

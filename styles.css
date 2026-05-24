@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   line-height: 1.5;
 
   --primary-text-color: #181820;
@@ -15,6 +15,7 @@ body {
   --icon-color: #6a737d;
   --border-color: #ff9a0045;
   --text-decoration-color: #ff9a00;
+  --accent-color: #ff9a00;
 }
 
 .container {
@@ -51,7 +52,8 @@ body {
 
 @media screen and (max-width: 576px) {
   .main-info,
-  .contact_info_container {
+  .contact_info_container,
+  .skills__groups {
     flex-direction: column;
   }
 
@@ -61,6 +63,10 @@ body {
 
   .contact-info__block:not(:last-child) {
     margin-bottom: 20px;
+  }
+
+  .skills__groups {
+    gap: 20px;
   }
 
   .experiences {
@@ -77,8 +83,26 @@ body {
 .contact-info__header {
   color: var(--primary-text-color);
   margin-bottom: 15px;
-  text-decoration-color: var(--text-decoration-color);
-  text-decoration-line: underline;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.contact-info__header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  width: 40%;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.contact-info__header:hover::after {
+  width: 100%;
 }
 
 .contact-info__sub-header {
@@ -101,6 +125,21 @@ body {
   text-decoration: none;
   display: flex;
   justify-content: start;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Lift + accent only on the clickable contact items (anchors) */
+a.contact-info__item:hover {
+  color: var(--accent-color);
+  transform: translateX(3px);
+}
+
+a.contact-info__item:hover .contact-info__item-icon path {
+  fill: var(--accent-color);
+}
+
+.contact-info__item-icon path {
+  transition: fill 0.2s ease;
 }
 
 .contact-info__item:not(:last-child) {
@@ -129,7 +168,38 @@ body {
   height: 100px;
   object-fit: cover;
   border: 3px solid;
-  border-color: var(--text-decoration-color);
+  border-color: var(--accent-color);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-info__avatar:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 4px var(--border-color);
+}
+
+/* Avatar easter egg: triggered from script.js after 5 clicks */
+.contact-info__avatar--wobble {
+  animation: avatar-wobble 0.6s ease;
+}
+
+@keyframes avatar-wobble {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(-12deg) scale(1.08);
+  }
+  40% {
+    transform: rotate(10deg) scale(1.08);
+  }
+  60% {
+    transform: rotate(-8deg) scale(1.05);
+  }
+  80% {
+    transform: rotate(6deg) scale(1.03);
+  }
 }
 
 /* Intro and skills styles */
@@ -162,12 +232,63 @@ body {
 .skills__header {
   color: var(--secondary-text-color);
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.skills__text {
+.skills__groups {
+  gap: 40px;
+}
+
+.skills__group {
+  flex: 1 1 0;
+}
+
+.skills__group-title {
+  color: var(--primary-text-color);
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.skills__list {
+  list-style: none;
+}
+
+.skills__item {
+  margin-bottom: 14px;
+}
+
+.skills__item-name {
+  display: block;
   color: var(--secondary-text-color);
-  text-align: justify;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.skills__bar {
+  display: block;
+  height: 7px;
+  border-radius: 4px;
+  background-color: var(--border-color);
+  overflow: hidden;
+}
+
+.skills__bar-fill {
+  display: block;
+  height: 100%;
+  width: var(--level, 0%);
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  /* Animate from 0 to --level on first paint */
+  animation: skill-fill 1s ease forwards;
+}
+
+@keyframes skill-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--level, 0%);
+  }
 }
 
 /* Experience and additional info styles */
@@ -267,4 +388,102 @@ body {
 
 .additional-info__languages-item {
   color: var(--secondary-text-color);
+}
+
+/* Beyond the code styles */
+.resume__block--last {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.beyond__header {
+  color: var(--secondary-text-color);
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.beyond__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.beyond__item {
+  color: var(--secondary-text-color);
+  background-color: var(--border-color);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.beyond__item:hover {
+  transform: translateY(-2px);
+}
+
+/* The metallurgy chip nods to the persona — glows on hover */
+.beyond__item--secret {
+  cursor: help;
+}
+
+.beyond__item--secret:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+/* Easter egg: Rearden Metal mode (toggled via Konami code in script.js) */
+.egg-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #b8b8b8, #6e6e6e 45%, #d8d8d8 55%, #8a8a8a);
+  color: #1a1a1a;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+body.rearden-mode {
+  /* Swap the orange accent for a forged-metal silver */
+  --accent-color: #8a8f98;
+  --text-decoration-color: #8a8f98;
+  --border-color: #8a8f9833;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .skills__bar-fill {
+    width: var(--level, 0%);
+  }
+}
+
+/* Clean printing */
+@media print {
+  .resume {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+  }
+
+  .egg-banner {
+    display: none !important;
+  }
+
+  .skills__bar-fill {
+    animation: none;
+    width: var(--level, 0%);
+  }
 }
